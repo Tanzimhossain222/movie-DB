@@ -1,7 +1,20 @@
+import MovieList from '@/components/MovieList';
 
-const HomePage = () => {
+//dynamic import data
+const importData = async () => {
+  const data = await import('@/db/data.json');
+  return data.default;
+}
+
+const HomePage = async () => {
+  const movies = await importData();
+
+
   return (
-    <div>page</div>
+    <>
+
+      <MovieList movies={movies} />
+    </>
   )
 }
 

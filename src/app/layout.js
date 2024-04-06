@@ -1,3 +1,5 @@
+import Header from "@/components/Header";
+import Sidebar from "@/components/Sidebar";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -11,7 +13,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} dark:bg-body bg-white font-[Sora] dark:text-white text-dark`} >
+        <Header />
+        <main>
+          <div className="container grid lg:grid-cols-[218px_1fr] gap-[3.5rem]">
+            <Sidebar />
+            {children}
+          </div>
+        </main>
+      </body>
     </html>
   );
 }
