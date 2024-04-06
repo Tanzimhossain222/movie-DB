@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Rating from "./Rating";
 
-const MovieCard = ({ movie }) => {
+const MovieCard = ({ movie, dictionary }) => {
+
   return (
     <>
       <figure className="p-4 border border-black/10 shadow-sm dark:border-white/10 rounded-xl">
@@ -25,7 +26,7 @@ const MovieCard = ({ movie }) => {
             href={`/movies/${movie.id}`}
           >
             <Image src="/tag.svg" alt="" width="14" height="14" />
-            <span>Details</span>
+            <span>{dictionary.details}</span>
           </Link>
         </figcaption>
       </figure>

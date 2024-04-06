@@ -1,12 +1,12 @@
 import MovieCard from "./MovieCard";
 
-const MovieList = ({ movies }) => {
+const MovieList = ({ movies, dictionary }) => {
   return (
     <>
-      <div class="content">
-        <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-7">
+      <div className="content">
+        <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-7">
           {movies.map((movie) => (
-            <MovieCard key={movie.id} movie={movie} />
+            <MovieCard key={movie.id} movie={movie} dictionary={dictionary} />
           ))}
         </div>
       </div>

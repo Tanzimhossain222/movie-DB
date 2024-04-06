@@ -1,5 +1,4 @@
 import Header from "@/components/Header";
-import Sidebar from "@/components/Sidebar";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -17,7 +16,6 @@ export default function RootLayout({ children }) {
         <Header />
         <main>
           <div className="container grid lg:grid-cols-[218px_1fr] gap-[3.5rem]">
-            <Sidebar />
             {children}
           </div>
         </main>

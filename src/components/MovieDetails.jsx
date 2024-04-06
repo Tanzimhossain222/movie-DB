@@ -1,10 +1,13 @@
+import { getDictionary } from "@/app/[lang]/dictionaries";
+import Image from "next/image";
+
 //dynamic import data
 const importData = async () => {
   const data = await import("@/db/data.json");
   return data.default;
 };
 
-const MovieDetails = async ({ id }) => {
+const MovieDetails = async ({ id, dictionary }) => {
   const allMovies = await importData();
   const findMovie = allMovies.find((movie) => movie.id === parseInt(id));
 
@@ -12,16 +15,23 @@ const MovieDetails = async ({ id }) => {
     <>
       <section>
         <div>
-          <img
+          <Image
             className="w-full object-cover max-h-[300px] lg:max-h-[500px]"
             src={findMovie.backdrop_path}
             alt={findMovie.title}
+            height={400}
+            width={600}
           />
         </div>
 
         <div className="grid grid-cols-12 py-12 gap-8">
           <div className="col-span-2">
-            <img src={findMovie.poster_path} alt={findMovie.title} />
+            <Image
+              src={findMovie.poster_path}
+              alt={findMovie.title}
+              width={150}
+              height={200}
+            />
           </div>
           <div className="col-span-8">
             <h2 className="font-bold text-slate-300 text-2xl">
@@ -29,18 +39,18 @@ const MovieDetails = async ({ id }) => {
             </h2>
             <p className="my-2 text-slate-400 italic">{findMovie.overview}</p>
             <ul className="text-slate-300 space-y-2 my-8">
-              <li>Release Date : {findMovie.release_date} </li>
-              <li>Average Vote : {findMovie.vote_average} </li>
-              <li>Vote Count :{findMovie.vote_count} </li>
-              <li>Popularity :{findMovie.popularity} </li>
+              <li>{dictionary.release_Date} : {findMovie.release_date} </li>
+              <li>{dictionary.average_Vote} : {findMovie.vote_average} </li>
+              <li>{dictionary.vote_count} :{findMovie.vote_count} </li>
+              <li>{dictionary.popularity} :{findMovie.popularity} </li>
             </ul>
           </div>
           <div className="col-span-2 space-y-4">
             <button className="py-2 w-full bg-primary font-medium text-slate-800 rounded-md">
-              Stream In HD
+              {dictionary.stream_btn}
             </button>
             <button className="py-2 w-full bg-primary font-medium text-slate-800 rounded-md">
-              Download In HD
+              {dictionary.download}
             </button>
           </div>
         </div>
