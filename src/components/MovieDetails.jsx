@@ -1,5 +1,6 @@
 import { getDictionary } from "@/app/[lang]/dictionaries";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
 //dynamic import data
 const importData = async () => {
@@ -10,6 +11,10 @@ const importData = async () => {
 const MovieDetails = async ({ id, dictionary }) => {
   const allMovies = await importData();
   const findMovie = allMovies.find((movie) => movie.id === parseInt(id));
+
+  if(!findMovie){
+    notFound();
+  }
 
   return (
     <>

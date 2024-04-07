@@ -14,8 +14,8 @@ const HomePage = async ({ params: { lang } }) => {
 
   return (
     <>
-      <Sidebar lang={lang} dictionary={dictionary} />
-      <MovieList movies={movies} lang={lang}  dictionary={dictionary} />
+      <Sidebar dictionary={dictionary} />
+      <MovieList movies={movies} dictionary={dictionary} />
     </>
   )
 }
