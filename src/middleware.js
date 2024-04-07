@@ -9,10 +9,10 @@ let locales = ['bn', 'en']
 
 // Get the preferred locale, similar to above or using a library
 function getLocale(request) {
-    const cookieLocale = request.cookies.get('NEXT_LOCALE');
-    if (cookieLocale && locales.includes(cookieLocale.value)) {
-        return cookieLocale.value
-      }
+    // const cookieLocale = request.cookies.get('NEXT_LOCALE');
+    // if (cookieLocale && locales.includes(cookieLocale.value)) {
+    //     return cookieLocale.value
+    //   }
    
     const acceptedLanguage = request.headers.get('accept-language') ?? undefined
     let headers = { 'accept-language': acceptedLanguage }

@@ -16,6 +16,7 @@ const MovieDetails = async ({ id, dictionary }) => {
     notFound();
   }
 
+
   return (
     <>
       <section>

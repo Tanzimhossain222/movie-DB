@@ -1,6 +1,8 @@
 "use client";
 import Cookies from "js-cookie";
 import Image from "next/image";
+import { redirect } from 'next/navigation'
+
 
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
@@ -26,19 +28,29 @@ const LanguageSwitcher = () => {
   );
   const [showMenu, setShowMenu] = useState(false);
 
-  const handleLanguageChange = (lang) => {
-    const currentPath = pathname.replace(/^\/[a-z]{2}(\/|$)/, "/");
-    console.log(currentPath);
+//   const handleLanguageChange = (lang) => {
+//     const currentPath = pathname.replace(/^\/[a-z]{2}(\/|$)/, "/");
+//     console.log(currentPath);
+//     setSelectedLanguage({
+//       ...selectedLanguage,
+//       code: lang,
+//       language: lang === "en" ? "English" : "Bangla",
+//     });
+//     setShowMenu(false);
+//     Cookies.set("NEXT_LOCALE", lang, { expires: 365 });
+//     router.push(`${currentPath}`, `${lang}${currentPath}`, { locale: lang });
+//   };
+
+const handleLanguageChange = (lang) => {
+    const newPath = pathname.replace(/^\/[a-z]{2}(\/|$)/, `/${lang}/`);
     setSelectedLanguage({
-      ...selectedLanguage,
       code: lang,
-      language: lang === "en" ? "English" : "Bangla",
+      language: lang === "en" ? "English" : "Bangla"
     });
     setShowMenu(false);
-    Cookies.set("NEXT_LOCALE", lang, { expires: 365 });
-    router.push(`${currentPath}`, `${lang}${currentPath}`, { locale: lang });
+    router.push(newPath, undefined, { locale: lang });
   };
-
+  
 
 
   return (

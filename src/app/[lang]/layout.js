@@ -17,6 +17,7 @@ export default async function MovieLayout({ children, params: { lang } }) {
                 <div className="container grid lg:grid-cols-[218px_1fr] gap-[3.5rem]">
                     {children}
                 </div>
+                
             </main>
         </>
     );
